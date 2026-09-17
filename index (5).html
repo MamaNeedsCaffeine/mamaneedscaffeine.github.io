@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mama Needs Caffeine - Real Tasks. Real People. Real Money.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Lobster&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink-bg:#FFF0F6;
+    --pink-card:#FFFFFF;
+    --pink-soft:#FFD6E8;
+    --pink-hot:#FF5D9E;
+    --pink-hot-deep:#EB3E85;
+    --ink:#2B1E29;
+    --ink-soft:#6B5563;
+    --shadow: 0 10px 24px rgba(235, 62, 133, 0.14);
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--pink-bg);
+    color:var(--ink);
+    font-family:'Quicksand', sans-serif;
+    font-weight:500;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3, .btn, .badge-label{ font-family:'Baloo 2', cursive; }
+
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 20px 90px; }
+
+  a{ text-decoration:none; color:inherit; }
+  img{ max-width:100%; display:block; }
+
+  /* ---------- HERO ---------- */
+  .hero{ text-align:center; padding:56px 0 36px; }
+  .hero .heart-row{ font-size:1.3rem; margin-bottom:6px; letter-spacing:6px; }
+
+  .logo{
+    font-family:'Lobster', cursive;
+    font-size:clamp(3.2rem, 10vw, 5.4rem);
+    margin:0 0 6px;
+    line-height:1.05;
+  }
+  .logo .dark-part{
+    display:inline-block;
+    color:var(--ink);
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.08);
+    animation: bounce 1.4s ease-in-out infinite;
+  }
+  .logo .pink-part{
+    display:inline-block;
+    color:var(--pink-hot-deep);
+    text-shadow: 3px 3px 0 rgba(235,62,133,0.2);
+    animation: bounce 1.4s ease-in-out infinite;
+  }
+  @keyframes bounce{
+    0%, 50%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-22px); }
+  }
+
+  .hero .tagline{ font-family:'Baloo 2', cursive; font-weight:600; font-size:1.1rem; color:var(--pink-hot-deep); margin:0 0 22px; }
+  .hero p.bio{ max-width:560px; margin:0 auto 26px; color:var(--ink-soft); font-weight:600; font-size:1rem; line-height:1.6; }
+
+  .socials{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap; }
+  .socials a{ padding:9px 18px; border-radius:100px; background:#fff; border:2px solid var(--pink-soft); font-family:'Baloo 2', cursive; font-weight:600; font-size:0.85rem; color:var(--pink-hot-deep); transition:transform .15s ease, background .15s ease; }
+  .socials a:hover{ background:var(--pink-soft); transform:translateY(-2px); }
+  .socials a.meta-link{ border-color:var(--pink-hot-deep); }
+
+  .section-title{ text-align:center; font-size:1.8rem; font-weight:700; margin:64px 0 8px; color:var(--ink); }
+  .section-sub{ text-align:center; color:var(--ink-soft); font-weight:600; margin:0 0 30px; font-size:0.95rem; max-width:560px; margin-left:auto; margin-right:auto; }
+
+  .feature-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; }
+  @media (max-width:860px){ .feature-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .feature-grid{ grid-template-columns:1fr; } }
+
+  .feature-card{ background:var(--pink-card); border-radius:24px; overflow:hidden; box-shadow:var(--shadow); border:3px solid #fff; display:flex; flex-direction:column; transition:transform .15s ease; }
+  .feature-card:hover{ transform:translateY(-3px); }
+  .feature-card > img{ width:100%; aspect-ratio:1/1; object-fit:cover; object-position:top; }
+  .feature-card .feature-body{ padding:18px 20px 22px; text-align:center; flex:1; display:flex; flex-direction:column; justify-content:center; }
+  .feature-card h3{ font-size:1.15rem; font-weight:700; margin:0 0 6px; color:var(--ink); }
+  .feature-card p{ color:var(--ink-soft); font-weight:600; font-size:0.88rem; margin:0; }
+
+  .btn{ display:inline-block; background:var(--pink-hot); color:#fff; font-weight:700; font-size:0.9rem; padding:12px 22px; border-radius:100px; box-shadow:0 6px 14px rgba(235,62,133,0.35); transition:background .15s ease, transform .15s ease; }
+  .btn:hover{ background:var(--pink-hot-deep); transform:translateY(-2px); }
+
+  /* slideshow inside merch card */
+  .slideshow{ position:relative; width:100%; aspect-ratio:1/1; overflow:hidden; background:#fff; }
+  .slideshow img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; animation: fadeCycle 9s infinite; }
+  .slideshow img:nth-child(1){ animation-delay:0s; }
+  .slideshow img:nth-child(2){ animation-delay:3s; }
+  .slideshow img:nth-child(3){ animation-delay:6s; }
+  @keyframes fadeCycle{
+    0%{ opacity:0; }
+    4%{ opacity:1; }
+    30%{ opacity:1; }
+    36%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+
+  .subrow{ display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; margin-top:24px; }
+  @media (max-width:780px){ .subrow{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:520px){ .subrow{ grid-template-columns:1fr; } }
+  .sub-card{ background:var(--pink-card); border-radius:24px; overflow:hidden; box-shadow:var(--shadow); border:3px solid #fff; transition:transform .15s ease; }
+  .sub-card[href]:hover{ transform:translateY(-3px); }
+  .sub-card img{ width:100%; }
+  .sub-card .sub-body{ padding:16px 18px 20px; text-align:center; }
+  .sub-card h4{ font-family:'Baloo 2', cursive; font-size:1.05rem; margin:0 0 4px; }
+  .sub-card .code{ display:block; font-family:'Baloo 2', cursive; color:var(--pink-hot-deep); font-size:0.8rem; font-weight:600; }
+  .sub-card .faq-link{ display:inline-block; margin-top:6px; font-size:0.78rem; font-weight:700; color:var(--pink-hot-deep); text-decoration:underline; }
+
+  .badge-row{ display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; margin-top:28px; }
+  @media (max-width:720px){ .badge-row{ grid-template-columns:repeat(3,1fr); } }
+  @media (max-width:480px){ .badge-row{ grid-template-columns:repeat(2,1fr); } }
+  .badge-card{ background:var(--pink-card); border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:3px solid #fff; transition:transform .15s ease; }
+  .badge-card:hover{ transform:translateY(-3px); }
+  .badge-card img{ width:100%; }
+
+  .text-card{ max-width:460px; margin:0 auto; background:var(--pink-card); border-radius:24px; box-shadow:var(--shadow); border:3px solid #fff; padding:30px 26px; text-align:center; }
+  .text-card h3{ font-size:1.3rem; margin:0 0 10px; }
+  .text-card p{ color:var(--ink-soft); font-weight:600; font-size:0.92rem; margin:0 0 18px; }
+  .text-card .code{ display:block; font-family:'Baloo 2', cursive; color:var(--pink-hot-deep); margin-bottom:16px; font-weight:700; }
+  .tax-note{ max-width:460px; margin:0 auto 24px; background:#FFF8E8; border:2px dashed var(--pink-soft); border-radius:18px; padding:18px 22px; text-align:center; color:var(--ink); font-weight:600; font-size:0.9rem; }
+
+  .ribbon{ margin-top:64px; text-align:center; background:var(--pink-soft); border-radius:100px; padding:16px 20px; font-family:'Baloo 2', cursive; font-weight:700; color:var(--pink-hot-deep); font-size:1rem; }
+
+  .disclosure{ max-width:600px; margin:56px auto 0; text-align:center; color:var(--ink-soft); font-weight:600; font-size:0.88rem; line-height:1.7; }
+  .disclosure h3{ font-family:'Baloo 2', cursive; color:var(--ink); font-size:1.2rem; margin:0 0 10px; }
+
+  footer{ margin-top:32px; text-align:center; color:var(--ink-soft); font-size:0.8rem; font-weight:600; line-height:1.7; }
+  footer p{ margin:0 0 8px; }
+
+  /* ---------- NEW: Gear + Follow Us ---------- */
+  .gear-section{ margin-top:64px; }
+  .gear-header{ text-align:center; background:var(--pink-soft); border-radius:24px; padding:28px 20px 22px; margin-bottom:24px; }
+  .gear-header h2{ font-size:1.9rem; margin:0 0 6px; color:var(--ink); }
+  .gear-header p{ color:var(--ink-soft); font-weight:600; margin:0; font-size:0.92rem; }
+  .gear-list{ display:flex; flex-direction:column; gap:18px; max-width:640px; margin:0 auto; }
+  .gear-card{ background:var(--pink-card); border:3px solid var(--pink-soft); border-radius:20px; padding:22px 24px; box-shadow:var(--shadow); }
+  .gear-card .gear-title{ display:flex; align-items:center; gap:10px; font-family:'Baloo 2', cursive; font-weight:700; font-size:1.05rem; margin:0 0 6px; color:var(--ink); }
+  .gear-card .gear-title .dot{ width:26px; height:26px; border-radius:50%; background:var(--pink-hot); color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.8rem; flex-shrink:0; }
+  .gear-card p{ color:var(--ink-soft); font-weight:600; font-size:0.9rem; margin:0 0 16px; }
+  .gear-card .btn{ display:block; text-align:center; width:100%; }
+
+  /* ---------- NEW: FAQ list (Amelia FAQ) ---------- */
+  .faq-list{ max-width:720px; margin:0 auto; display:flex; flex-direction:column; gap:14px; }
+  .faq-item{ background:var(--pink-card); border-radius:18px; border:3px solid #fff; box-shadow:var(--shadow); padding:18px 22px; }
+  .faq-item h4{ font-family:'Baloo 2', cursive; font-size:1rem; margin:0 0 8px; color:var(--ink); }
+  .faq-item p{ color:var(--ink-soft); font-weight:600; font-size:0.88rem; margin:0; line-height:1.6; }
+  .faq-note{ max-width:640px; margin:24px auto 0; background:#FFF8E8; border:2px dashed var(--pink-soft); border-radius:18px; padding:16px 20px; text-align:center; color:var(--ink); font-weight:600; font-size:0.85rem; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="heart-row">💗 ☕ 💗</div>
+    <h1 class="logo">
+      <span class="dark-part">Mama Needs</span>
+      <span class="pink-part">Caffeine</span>
+    </h1>
+    <p class="tagline">Real Tasks. Real People. Real Money.</p>
+    <p class="bio">I'm Lauren - a stay-at-home mom of twins who spent five years trying to figure out how to bring in income without giving up the flexibility of being home with my kids. This is everything I've actually found that works: no fake promises, no pretending it's easy, just the real ways I've made extra money from the chaos.</p>
+    <div class="socials">
+      <a href="https://www.tiktok.com/@mamaneedscaffeine1" target="_blank" rel="noopener">TikTok 🤍 Mama Needs Caffeine</a>
+      <a href="https://www.tiktok.com/@choresthatpay?_r=1&_t=ZP-99oazh02ytD" target="_blank" rel="noopener">TikTok 🤍 Chores That Pay</a>
+      <a href="https://www.instagram.com/choresthatpay" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/share/19jVBPWuqv/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.facebook.com/profile.php?id=61594440024129" target="_blank" rel="noopener">Facebook 🤍 Chores That Pay</a>
+      <a href="#taxes" class="meta-link">Taxes Info</a>
+      <a href="#disclosure" class="meta-link">Affiliate Disclosure</a>
+    </div>
+  </section>
+
+  <div class="feature-grid">
+
+    <a class="feature-card" href="#ai-training">
+      <img src="train-ai-banner.png" alt="Get Paid to Train AI">
+      <div class="feature-body">
+        <h3>Get Paid to Train AI</h3>
+        <p>Turn everyday chores like cleaning, cooking, and laundry into a paycheck.</p>
+      </div>
+    </a>
+
+    <a class="feature-card" href="https://shop.beacons.ai/digitalboss01/f6647936-2708-4bae-9449-1b0b3589a94e?affiliateKey=gAAAAABqju7hpeiJHyTvDbLSB4NCJ6GFQ7908uTEuJtRSpXCqfMTRBV7bOZbho4EnyEIiHt3Xdnq7fMK0qpk3MeNJDt9vKxTH-o14Z8bN5rcPBhoAdFT0NekjdnhtIFwImmFQcELhidVhC5bWuTH5XVzr85N9dUHmd6Xo5Oggi_03ubbiLdP37h6tB6horqKjZWrO5Y7HGvU7btyRE9fcZa1DdKjd5y86A%3D%3D&t=1787776567490" target="_blank" rel="noopener">
+      <img src="academy.png" alt="7 Figure Academy">
+      <div class="feature-body">
+        <h3>7 Figure Academy</h3>
+        <p>Over 15 streams of income - print on demand, affiliate marketing, digital products & more.</p>
+      </div>
+    </a>
+
+    <a class="feature-card" href="#cashback">
+      <img src="shopping-banner.png" alt="Earn Money From Shopping">
+      <div class="feature-body">
+        <h3>Earn Money From Shopping</h3>
+        <p>Cash back, gift cards, points & rewards for things you're already buying.</p>
+      </div>
+    </a>
+
+    <a class="feature-card" href="https://mama-needs-caffeine.printify.me/products" target="_blank" rel="noopener">
+      <div class="slideshow">
+        <img src="shirt-work-smarter.jpg" alt="Work Smarter Not Harder shirt">
+        <img src="shirt-lets-get-paid.jpg" alt="Let's Get Paid shirt">
+        <img src="shirt-extra-income.jpg" alt="Turn Everyday Life Into Extra Income shirt">
+      </div>
+      <div class="feature-body">
+        <h3>Shop My Merch</h3>
+        <p>Shop everything I've got in one place.</p>
+      </div>
+    </a>
+
+    <a class="feature-card" href="https://amzn.to/4gNyfZn" target="_blank" rel="noopener">
+      <img src="coloring-books.png" alt="Shop My Coloring Books">
+      <div class="feature-body">
+        <h3>Coloring Books</h3>
+        <p>My library of printable and digital coloring pages for the kiddos.</p>
+      </div>
+    </a>
+
+  </div>
+
+  <h2 class="section-title" id="ai-training">Get Paid to Train AI 💗</h2>
+  <p class="section-sub">Pick an app below and turn today's to-do list into today's paycheck.</p>
+  <div class="subrow">
+    <a class="sub-card" href="https://www.ameliachores.com/r/LBELSL47G3JT" target="_blank" rel="noopener">
+      <img src="amelia.png" alt="Amelia">
+      <div class="sub-body">
+        <h4>Amelia - $10-12/hr</h4>
+        <a class="faq-link" href="#amelia-faq">See Amelia FAQ →</a>
+      </div>
+    </a>
+    <a class="sub-card" href="https://api.micro-agi.com/r/9BEUFB" target="_blank" rel="noopener">
+      <img src="shift.png" alt="Shift">
+      <div class="sub-body">
+        <h4>Shift - $12/hr</h4>
+        <span class="code">Referral code: 9BEUFB</span>
+      </div>
+    </a>
+    <div class="sub-card">
+      <img src="reps.jpg" alt="REPS">
+      <div class="sub-body">
+        <h4>REPS - up to $21/hr (iPhone only)</h4>
+        <span class="code">Go to App Store → REPS → enter code REP4657</span>
+      </div>
+    </div>
+    <a class="sub-card" href="https://contracted.ai/interview/4?ref=8CCH0YBC" target="_blank" rel="noopener">
+      <img src="contracted-ai.png" alt="Contracted AI">
+      <div class="sub-body">
+        <h4>Contracted AI - $8/hr</h4>
+        <span class="code">Referral code: 8CCHOYBC</span>
+      </div>
+    </a>
+    <a class="sub-card" href="https://go.highfivetasks.com/lauren-belsham" target="_blank" rel="noopener">
+      <img src="high-five-tasks.png" alt="High Five Tasks">
+      <div class="sub-body">
+        <h4>High Five Tasks - $10/hr</h4>
+      </div>
+    </a>
+  </div>
+
+  <!-- ---------- Amelia FAQ ---------- -->
+  <h2 class="section-title" id="amelia-faq">Amelia FAQ 💙</h2>
+  <p class="section-sub">Quick answers before you start.</p>
+  <div class="faq-list">
+    <div class="faq-item">
+      <h4>What is Amelia?</h4>
+      <p>Amelia is an AI-training platform that lets you complete eligible everyday tasks from home. All current tasks and instructions are available inside the app.</p>
+    </div>
+    <div class="faq-item">
+      <h4>What kind of tasks can I do?</h4>
+      <p>Everyday activities like folding laundry, cooking/food prep, washing dishes, picking up toys, cleaning, and lawn maintenance. All other tasks are available inside the app.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Do I need special equipment?</h4>
+      <p>Yes - a compatible smartphone (iPhone 11+, Google Pixel 6+, or Samsung Galaxy S21+; no SE, E, or FE models) and a head strap / phone holder.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Can I just hold my phone or use Meta glasses / a chest strap?</h4>
+      <p>No. Your phone needs to be positioned correctly for the task to be recorded accurately so you can be paid. You must purchase the appropriate head strap.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Can I use Amelia at work?</h4>
+      <p>Amelia is consistently growing. When commercial tasks are available, a separate post will be created about them.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Can I repeat the same chores?</h4>
+      <p>Yes, as long as the tasks are available. A task may be temporarily removed if it's been repeated too many times overall - your app will tell you, and updates will be posted here too.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Can I cook?</h4>
+      <p>Yes, under food prep - but 50% of the time must be food prep before you cook. If you prep and cook in roughly even time, that's fine.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Why would a task get rejected?</h4>
+      <p>Common reasons include camera angle or visibility problems. Make sure: your camera faces downward, your head strap is on securely, your hands are visible 90% of the time, you're following the task correctly, nobody else is in the video, the footage is clear, and you wipe the lens before you start.</p>
+    </div>
+    <div class="faq-item">
+      <h4>When can I do tasks?</h4>
+      <p>Tasks are generally available throughout the day, as long as the task is available in the app.</p>
+    </div>
+    <div class="faq-item">
+      <h4>How much can I make?</h4>
+      <p>Earnings vary based on how much you want to work - some people work 10 hours a week, others 30+. You're required to work a minimum of 10 hours per week.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Is this a W-2 job?</h4>
+      <p>No, this is 1099 work. Please set aside 25% of your income for taxes, since taxes aren't taken out.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Where do I go if I need help?</h4>
+      <p>Use Amelia's official support on Discord. In the Amelia app, go to Account → Discord Support.</p>
+    </div>
+    <div class="faq-item">
+      <h4>How does the pay structure work?</h4>
+      <p>The more hours you work during the month, the more you earn per hour: 1-54 hours = $10/hr, 55-99 hours = $11/hr, 100+ hours = $12/hr. The higher tier replaces the lower rate for that month - it does not stack on top. Example: if you work 20 hours, you're paid $10/hr. Once you reach 55 hours, all of your hours for the month (including the first 54) are recalculated at $11/hr; at 100+ hours, all hours are recalculated at $12/hr.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Does Amelia offer challenges or bonuses?</h4>
+      <p>Yes! Amelia often offers extra challenges and bonus opportunities - current challenges, bonus opportunities, new incentives, and updated requirements. These may change month to month, so check the app regularly.</p>
+    </div>
+    <div class="faq-item">
+      <h4>How do referrals work?</h4>
+      <p>Referrals are a huge part of Amelia's earning potential. Earn 10% of your referral's income, up to $250 per person, without taking anything away from them. Make sure your referrals sign up using your personal Amelia referral link so they're properly attached to your account.</p>
+    </div>
+  </div>
+  <div class="faq-note">Pay tiers, bonus opportunities, referral terms, and app guidelines can change. Always check your Amelia app for the most current information.</div>
+
+  <h2 class="section-title" id="cashback">Earn Money From Shopping 🛍️</h2>
+  <p class="section-sub">Cash back, points, and gift cards for things you're already doing.</p>
+  <div class="badge-row">
+    <a href="https://referral.fetch.com/vvv3/referralqr?code=Q3BXM" target="_blank" rel="noopener" class="badge-card"><img src="badge-fetch.png" alt="Fetch"></a>
+    <a href="https://www.rakuten.com/r/LHERSH76" target="_blank" rel="noopener" class="badge-card"><img src="badge-rakuten.png" alt="Rakuten"></a>
+    <a href="https://upside.app.link/LAUREN88553" target="_blank" rel="noopener" class="badge-card"><img src="badge-upside.png" alt="Upside"></a>
+    <a href="https://www.swagbucks.com/profile/r_mITPNJ9vuI3R8Bai?rp=3" target="_blank" rel="noopener" class="badge-card"><img src="badge-swagbucks.png" alt="Swagbucks"></a>
+    <a href="https://app.brandclub.com/appshare?referralCode=9cac57cb-7c65-445a-a83e-d8b32e8ba21a" target="_blank" rel="noopener" class="badge-card"><img src="badge-brandclub.png" alt="BrandClub"></a>
+    <a href="https://ibotta.onelink.me/iUfE/8cc13c64?friend_code=isktabl" target="_blank" rel="noopener" class="badge-card"><img src="badge-ibotta.png" alt="Ibotta"></a>
+  </div>
+
+  <h2 class="section-title" id="taxes">Taxes 🧾</h2>
+  <div class="tax-note">Please be mindful all of these jobs are considered 1099 jobs. You are responsible for your own taxes. Take 20% and put it away.</div>
+
+  <h2 class="section-title">Money Help 💸</h2>
+  <p class="section-sub">Want a pro in your corner for tax season?</p>
+  <div class="text-card">
+    <h3>Numbers Don't Lie</h3>
+    <p>Need a 1099 tax pro? Book a call with Cassie and mention my code for a referral discount.</p>
+    <span class="code">Code: Cassie-KC</span>
+    <a class="btn" href="https://www.numbersdontliekc.com/booking" target="_blank" rel="noopener">BOOK NOW →</a>
+  </div>
+
+  <!-- ---------- Gear + Follow Us ---------- -->
+  <div class="gear-section">
+    <div class="gear-header">
+      <h2>Gear + Follow Us</h2>
+      <p>Tap any button below - every link is clickable.</p>
+    </div>
+    <div class="gear-list">
+      <div class="gear-card">
+        <p class="gear-title"><span class="dot">♥</span> My Favorite Head Strap</p>
+        <p>The head strap I use for hands-free task recording (from my Amazon Storefront).</p>
+        <a class="btn" href="https://a.co/d/09XKyLMh" target="_blank" rel="noopener">Shop My Head Strap</a>
+      </div>
+      <div class="gear-card">
+        <p class="gear-title"><span class="dot">♥</span> Amelia Robotics - Chores That Pay</p>
+        <p>Join our Facebook community for Amelia help, tips, questions and task talk.</p>
+        <a class="btn" href="https://www.facebook.com/profile.php?id=61594440024129" target="_blank" rel="noopener">Join the Facebook Group</a>
+      </div>
+      <div class="gear-card">
+        <p class="gear-title"><span class="dot">♥</span> The Caffeinated Hustle</p>
+        <p>Our Facebook group for side hustles, training AI, saving money and more.</p>
+        <a class="btn" href="https://www.facebook.com/groups/1410020214595066/?rdid=fsnGJmeUayQ2RbTs&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2F18JztroyEA%2F%23" target="_blank" rel="noopener">Join the Caffeinated Hustle</a>
+      </div>
+      <div class="gear-card">
+        <p class="gear-title"><span class="dot">♥</span> TikTok @mamaneedscaffeine1</p>
+        <p>Follow along for tasking tips, app updates, lives and side-hustle chaos.</p>
+        <a class="btn" href="https://www.tiktok.com/@mamaneedscaffeine1" target="_blank" rel="noopener">Follow on TikTok</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ribbon">Same Everyday Life 💗 More Rewards 💗 Mama Needs Caffeine</div>
+
+  <div class="disclosure" id="disclosure">
+    <h3>Affiliate Disclosure</h3>
+    <p>This page contains referral and affiliate links. That means if you sign up or make a purchase through one of these links, I may earn a small commission or bonus at no extra cost to you. I only share things I have personally tried or believe in. Rates, bonuses, and program details can change at any time, so always confirm current terms directly in each app or site before starting.</p>
+  </div>
+
+  <footer>
+    <p>© Mama Needs Caffeine</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
